@@ -10,7 +10,7 @@ import xyz.somedefinitions.ejile.entity.Admin;
 import java.time.LocalDate;
 
 @Mapper
-public interface AdminDao {
+public interface AdminMapper {
     @Select("select id,username,authority from admin where username = #{username} and password = #{password}")
     @Results(
             id = "id",

@@ -26,4 +26,5 @@ public class Admin implements Serializable,Cloneable{
     /** 修改日期 */
     private LocalDate updateTime ;
 
+    private Business business;
 }
