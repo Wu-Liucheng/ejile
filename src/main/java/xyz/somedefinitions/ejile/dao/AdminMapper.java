@@ -5,6 +5,7 @@ import org.apache.ibatis.type.JdbcType;
 import xyz.somedefinitions.ejile.entity.Admin;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Mapper
 public interface AdminMapper {
@@ -24,4 +25,20 @@ public interface AdminMapper {
             }
     )
     Admin selectByUsernameAndPassword(Admin admin);
+
+    @Select("select id,username,authority,businessId from admin where businessId = #{id}")
+    List<Admin> selectByBusinessId(Integer id);
+
+    @Select("select id from admin where username = #{username}")
+    Admin selectByUsername(String username);
+
+    @Insert("insert into admin(username,password,authority,businessId,createTime,updateTime) " +
+            "values(#{username},#{password},#{authority},#{businessId},#{createTime},#{updateTime});")
+    int insert(Admin admin);
+
+    @Delete("delete from admin where id = #{id}")
+    int deleteByPrimaryKey(Integer id);
+
+    @Update("update admin set password=#{password},updateTime=#{updateTime} where id=#{id}")
+    int updatePassword(Admin admin);
 }
