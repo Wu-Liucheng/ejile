@@ -16,6 +16,6 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public RequestResult<Admin> adminLogin(Admin admin) {
         Admin adm = adminMapper.selectByUsernameAndPassword(admin);
-        return new RequestResult<>(admin!=null,admin,"");
+        return new RequestResult<>(adm!=null,adm,"");
     }
 }
