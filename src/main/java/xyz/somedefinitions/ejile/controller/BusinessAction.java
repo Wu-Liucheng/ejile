@@ -8,6 +8,7 @@ import xyz.somedefinitions.ejile.service.BusinessService;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/business")
@@ -29,7 +30,13 @@ public class BusinessAction {
 
     @RequestMapping(value = "/update",method = RequestMethod.POST)
     @ResponseBody
-    public RequestResult<Void> updateInfo(@RequestBody Business business){
+    public RequestResult<Void> updateInfo(@RequestBody @Valid Business business){
         return businessService.update(business);
+    }
+
+    @RequestMapping(value = "/select-all",method = RequestMethod.GET)
+    @ResponseBody
+    public RequestResult<List<Business>> listAll(){
+        return businessService.listAll();
     }
 }

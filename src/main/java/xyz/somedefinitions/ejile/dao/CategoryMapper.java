@@ -28,4 +28,14 @@ public interface CategoryMapper {
                     many = @Many(select = "xyz.somedefinitions.ejile.dao.CommodityMapper.selectByCategoryId"))
     })
     List<Category> selectByBusinessIdWithCommoditiesInfo(Integer id);
+
+    @Insert("insert into category(name,businessId,imageUrl,createTime,updateTime) values " +
+            "(#{name},#{businessId},#{imageUrl},#{createTime},#{updateTime});")
+    int insert(Category category);
+
+    @Delete("delete from category where id = #{id}")
+    int delete(Integer id);
+
+    @Update("update category set name=#{name},imageUrl=#{imageUrl} where id = #{id}")
+    int update(Category category);
 }

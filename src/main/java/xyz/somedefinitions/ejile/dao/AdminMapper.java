@@ -26,7 +26,7 @@ public interface AdminMapper {
     )
     Admin selectByUsernameAndPassword(Admin admin);
 
-    @Select("select id,username,authority,businessId from admin where businessId = #{id}")
+    @Select("select id,username,authority,businessId from admin where businessId = #{id} and authority = 1")
     List<Admin> selectByBusinessId(Integer id);
 
     @Select("select id from admin where username = #{username}")
@@ -41,4 +41,7 @@ public interface AdminMapper {
 
     @Update("update admin set password=#{password},updateTime=#{updateTime} where id=#{id}")
     int updatePassword(Admin admin);
+
+    @Select("select id from admin where id=#{id}")
+    Admin selectByPrimaryKey(Integer id);
 }

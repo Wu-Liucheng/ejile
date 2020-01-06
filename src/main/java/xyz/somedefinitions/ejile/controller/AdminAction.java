@@ -1,16 +1,14 @@
 package xyz.somedefinitions.ejile.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import xyz.somedefinitions.ejile.entity.Admin;
 import xyz.somedefinitions.ejile.entity.RequestResult;
 import xyz.somedefinitions.ejile.service.AdminService;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/admin")
@@ -40,5 +38,11 @@ public class AdminAction {
     @ResponseBody
     public RequestResult<Void> updatePassword(@RequestBody @Valid Admin admin){
         return adminService.updateAdminPassword(admin);
+    }
+
+    @RequestMapping(value = "/list",method = RequestMethod.GET)
+    @ResponseBody
+    public RequestResult<List<Admin>> listOfAdmins(@RequestParam (value = "businessId") Integer businessId){
+        return null;
     }
 }

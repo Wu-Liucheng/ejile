@@ -9,6 +9,7 @@ import xyz.somedefinitions.ejile.service.BusinessService;
 
 import javax.annotation.Resource;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -60,5 +61,10 @@ public class BusinessServiceImpl implements BusinessService {
         business1.setUpdateTime(LocalDate.now());
         int r = businessMapper.update(business1);
         return new RequestResult<>(r>0,null,"");
+    }
+
+    @Override
+    public RequestResult<List<Business>> listAll() {
+        return new RequestResult<>(true,businessMapper.selectAllWithNothing(),"");
     }
 }

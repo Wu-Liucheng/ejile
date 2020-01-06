@@ -13,6 +13,7 @@ import xyz.somedefinitions.ejile.service.AdminService;
 import javax.annotation.Resource;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -90,5 +91,10 @@ public class AdminServiceImpl implements AdminService {
         else {
             return new RequestResult<>(false,null,"");
         }
+    }
+
+    @Override
+    public RequestResult<List<Admin>> listOfOneBusinessAdmin(Integer businessId) {
+        return new RequestResult<>(true,adminMapper.selectByBusinessId(businessId),"");
     }
 }

@@ -42,4 +42,7 @@ public interface BusinessMapper {
 
     @Update("update business set balance=#{balance} where id=#{id};")
     int updateBalance(Business business);
+
+    @Select("select * from business")
+    List<Business> selectAllWithNothing();
 }
